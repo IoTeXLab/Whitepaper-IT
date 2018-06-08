@@ -6,3 +6,6 @@
 *.gz
 *.fls
 *.fdb_latexmk
+*.toc
+*.blg
+*.bbl

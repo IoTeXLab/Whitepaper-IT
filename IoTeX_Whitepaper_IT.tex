@@ -1,8 +1,11 @@
+ %!BIB program = bibtex
 \documentclass[a4paper,12pt]{article}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{bookmark}
+
 
 \title{IoTeX
 \linebreak
@@ -18,29 +21,50 @@
 
 \maketitle
 
-\vspace{120}
+\vspace{120pt}
 
 
-\textbf{Disclaimer} Questo documento deve essere inteso come una panoramica tecnica. Non vuole essere omnicomprensivo, né rappresentare un progetto definitivo; pertanto aspetti secondari non vengono trattati, come API, interconnessioni o linguaggi di programmazione.  
+\textbf{Disclaimer} Questo documento deve essere inteso come una panoramica tecnica. Non vuole essere omnicomprensivo, né rappresentare un progetto definitivo; pertanto aspetti secondari non vengono trattati, come API, interconnessioni o linguaggi di programmazione.
 
 \pagebreak
 
 \begin{abstract}
-The majority of Internet of Things (IoT) devices are developed in a centralized
-La maggior parte dei dispositivi IoT (Internet of Things), sebbene decentralizzati per natura, ad oggi sono distribuiti in modo centralizzato. Molti problemi sono emersi: scalabilità, costi operativi elevati, problemi di privacy, rischi per la sicurezza, e mancanza di valori funzionali. La Blockchain, decentralizzata per definizione, potrebbe essere una buona soluzione a questi problemi. Innanzitutto, la blockchain è elastica, abbastanza da risolvere la sfida della scalabilità dell'IoT in modo economicamente vantaggioso. In secondo luogo, mantenendo i dati all'interno di blockchain ben definite si elimina la preoccupazione per i dati IoT memorizzati in cloud potenzialmente suscettibili di trapelare o di abusi. In terzo luogo, le blockchain con smart contract e token hanno un enorme potenziale per rendere possibile il coordinamento autonomo di dispositivi per creare valore funzionale. Tuttavia, le blockchain esistenti hanno i loro limiti nell'affrontare i problemi dell'IoT, a causa delle sue caratteristiche peculiari, ad esempio la grande quantità ed eterogeneità dei dispositivi, i limiti nella potenza di elaborazione, nell'archiviazione dati, nell'alimentazione, ecc. 
-Questo documento introduce IoTeX, una rete decentralizzata per l'IoT basata su una blockchain incentrata sulla privacy con quattro importanti innovazioni:
+    \begin{center}
+        \textbf{Abstract}
+    \end{center}
+	La maggior parte dei dispositivi IoT (Internet of Things), sebbene decentralizzati per natura, ad oggi sono distribuiti in modo centralizzato. Molti problemi sono emersi: scalabilità, costi operativi elevati, problemi di privacy, rischi per la sicurezza, e mancanza di valore funzionale. La Blockchain, decentralizzata per definizione, può rappresentare una buona soluzione a questi problemi. Innanzitutto, la blockchain è abbastanza elastica da risolvere la sfida della scalabilità dell'IoT in modo economicamente vantaggioso. In secondo luogo, mantenendo i dati all'interno di blockchain ben definite, si eliminano i timori per i dati IoT memorizzati in cloud, potenzialmente suscettibili di trapelare o di essere violati. In terzo luogo, le blockchain con smart contract e token hanno un enorme potenziale per consentire il coordinamento autonomo dei dispositivi al fine di creare valore funzionale. Tuttavia, le blockchain esistenti hanno i loro limiti nell'affrontare i problemi dell'IoT, a causa delle caratteristiche peculiari che lo contraddistinguono, ad esempio la grande quantità e l'eterogeneità dei dispositivi, i limiti nella potenza di elaborazione, nell'archiviazione dati, nell'alimentazione, ecc.
+	Questo documento introduce IoTeX, una rete decentralizzata per l'IoT basata su una blockchain incentrata sulla privacy, con quattro importanti innovazioni:
 
-\begin{itemize}
+	\begin{itemize}
 
-\item{Blockchains in blockchain per una rete distribuita ben bilanciata che massimizza la scalabilità e la privacy in modo economicamente vantaggioso;}
+		\item{Blockchains in blockchain per una rete distribuita ben bilanciata che massimizza la scalabilità e la privacy in modo economicamente vantaggioso;}
 
-\item{La vera privacy sulla blockchain basata sul codice di pagamento inoltro, costante- firma dell'anello di dimensioni senza configurazione attendibile e prima implementazione di antiproiettile;}
+		\item{La vera privacy sulla blockchain basata sul codice di pagamento inoltro, costante- firma dell'anello di dimensioni senza configurazione attendibile e prima implementazione di antiproiettile;}
 
-\item{Consenso rapido con finalità immediate che migliorano notevolmente il rendimento di la rete e riducendo i costi di transazione;}
+		\item{Consenso rapido con finalità immediate che migliorano notevolmente il rendimento di la rete e riducendo i costi di transazione;}
 
-\item{Architetture di sistema basate su IoTeX flessibili e leggere per le applicazioni IoT chiave in più settori industriali.}
-\end{itemize}
+		\item{Architetture di sistema basate su IoTeX flessibili e leggere per le applicazioni IoT chiave in più settori industriali.}
+
+	\end{itemize}
 
 \end{abstract}
+
+\pagebreak
+
+\tableofcontents
+
+
+\section{L'Internet of Things}
+L'Internet of Things (IoT) sta emergendo rapidamente come manifestazione della visione di una società collegata in rete: qualsiasi cosa che beneficia di una connessione, è connesso. Eppure, questa trasformazione su vasta scala rappresenta solo l'inizio. Il numero di dispositivi IoT è destinato a crescere del 21\% ogni anno, raggiungendo i 18 miliardi nel 2022 \cite{r10}, mentre il mercato globale dell'IoT è destinato a passare dai 170 miliardi di dollari del 2017 a 560 miliardi di dollari entro il 2022 \cite{r15}, con un tasso di crescita annua del 26,9\%. Sebbene molti esperti dell'industria e consumatori entusiasti hanno definito l'IoT come la prossima rivoluzione industriale o il prossimo internet, ci sono tre problemi principali che frenano in maniera massiccia lo sviluppo e l'adozione dell'IoT.
+
+\section{Il problema della scalabilità}
+La maggior parte dei dispositivi IoT sono ad oggi connessi e controllati in maniera centralizzata. I dispositivi IoT sono connessi ad infrastrutture di back-end, su servizi cloud pubblici oppure localmente all'interno di server farm, per trasmettere dati oppure ricevere comandi di controllo.
+Attualmente, la dimensione dell IoT è strozzata dal livello di scalabilità ed elasticità di queste infrastrutture di back-end, server e data center. E' improbabile che il costo operativo sostanzialmente elevato necessario per scalare l'IoT sia coperto dai profitti della vendita dei dispositivi. Di conseguenza, molti fornitori IoT non riescono a proporre dispositivi economicamente vantaggiosi ed applicazioni che siano abbastanza scalabili ed affidabili per scenari reali.
+
+\pagebreak
+
+\bibliography{bibliography}
+
+\bibliographystyle{plain}
 
 \end{document}
