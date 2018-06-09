@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,draft]{article}
+\documentclass[a4paper,12pt]{article}
 \usepackage[a4paper]{geometry}
 \usepackage[italian]{babel}
 \usepackage{amsmath}
@@ -198,7 +198,7 @@ IOTA, che è stata rilasciata di recente, è costruita sulla base di una tecnolo
 IoTeX mira a diventare la spina dorsale ed il sistema nervoso scalabile e incentrato sulla privacy dedicato all'IoT. Per raggiungere questo obiettivo e affrontare le sfide citate, la nostra architettura il design della nostra architettura è basato sui seguenti princìpi.
 
 \subsubsection{Separazione delle responsabilità}
-Connettere direttamente tutti i nodi IoT in una singola blockchain è un sogno che non può essere realizzato. Oltre al fatto che le diverse applicazioni IoT richiedono fondamentalmente diversi insiemi di funzionalità della blockchain, ospitare ogni nodo IoT sulla stessa blockchain la farebbe crescere rapidamente in dimensioni e richiesta computazionale, e alla fine diventerebbe troppo pesante per molti Dispositivi IoT. Invece, una separazione delle funzioni assicura che ogni blockchain interagisca con un gruppo specifico di nodi IoT e, allo stesso tempo, interagisca con altre blockchain quando necessario. Analogamente a quanto accade per Internet, dispositivi eterogenei prima formano un gruppo interconnesso, la intranet; intranet più piccole possono ulteriormente formare una intranet più grande, che alla fine si connette alla spina dorsale di internet e comunicano l'un l'altro. 
+Connettere direttamente tutti i nodi IoT in una singola blockchain è un sogno che non può essere realizzato. Oltre al fatto che le diverse applicazioni IoT richiedono fondamentalmente diversi insiemi di funzionalità della blockchain, ospitare ogni nodo IoT sulla stessa blockchain la farebbe crescere rapidamente in dimensioni e richiesta computazionale, e alla fine diventerebbe troppo pesante per molti Dispositivi IoT. Invece, una separazione delle funzioni assicura che ogni blockchain interagisca con un gruppo specifico di nodi IoT e, allo stesso tempo, interagisca con altre blockchain quando necessario. Analogamente a quanto accade per Internet, dispositivi eterogenei prima formano un gruppo interconnesso, la intranet; intranet più piccole possono ulteriormente formare una intranet più grande, che alla fine si connette alla spina dorsale di internet e comunicano l'un l'altro.
 La "Separazione delle responsabilità" di solito crea un sistema ben bilanciato per massimizzare sia l'efficienza che la privacy.
 
 \subsubsection{Il Rasoio di Occam}
@@ -207,6 +207,49 @@ Diverse blockchain hanno utilizzi e applicazioni diverse, e dovrebbero essere pr
 \subsubsection{IoT amichevole}
 Come già detto, il mondo IoT è pieno di sistemi e nodi eterogenei, più o meno potenti in termini di risorse di calcolo, archiviazione e potenza. Dal momento che le operazioni che possono essere eseguite dai nodi deboli possono anche essere facilmente eseguite da quelli forti, le operazioni sulla blockchain dovrebbero essere progettate e ottimizzate per i nodi deboli, ovvero le operazioni dovrebbero essere abbastanza leggere da risparmiare risorse come potenza di calcolo, spazio di archiviazione ed energia.
 
+
+\subsection{Architettura: Blockchain in Blockchain}
+IoTeX è una rete di molte blockchain disposte gerarchicamente, dove le blockchain possono funzionare contemporaneamente tra loro mantenendo l'interoperabilità. Nel mondo IoTeX, come mostrato nella Figura 1, la blockchain radice (\emph{rootchain}) gestisce molte blockchain indipendenti, o \emph{subchain}. Una subchain si connette e interagisce con quei dispositivi IoT con i quali ha qualcosa in comune, ad esempio hanno uno scopo funzionale simile, operano in
+ambienti simili, o condividono un livello di fiducia simile. Se una subchain non funziona bene, ad esempio se viene attaccata o si verificano bug del software, la rootchain rimane completamente inalterata. Inoltre, sono supportate transazioni tra blockchain per trasferire valore e dati dalle subchain alla rootchain, oppure tra una subchain e l'altra attraverso la rootchain.
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{figura1}
+	\caption{IoTeX: Blockchain in blockchain, una architettura di rootchain con subchain}
+\end{figure}
+
+La blockchain radice è una blockchain pubblica accessibile da chiunque, che ha tre obiettivi principali:
+
+\begin{enumerate}
+	\item
+	      \textbf{Inoltro} di valore e dati tra le subchain in modo da preservare la privacy per abilitare l'interoperabilità tra le subchain;
+	\item
+	      \textbf{Supervisione} delle subchain, ad esempio penalizzare gli operatori di subchain confiscando il deposito;
+	\item
+	      \textbf{Regolamento e ancoraggio} dei pagamenti e della fiducia per le subchain.
+\end{enumerate}
+Con questi obiettivi definiti, la rootchain si concentra in particolare su scalabilità, robustezza,
+funzioni per preservare la privacy e capacità di controllare le subchain.
+Una subchain, d'altra parte, potrebbe potenzialmente essere una blockchain privata e dipendere dalla rootchain per l'interazione con altre sottocatene. Una subchain richiede flessibilità
+ed estendibilità per adattarsi ai diversi requisiti delle diverse applicazioni IoT. Una subchain sarà molto probabilmente gestita da operatori il cui ruolo è subordinato a un deposito di garanzia sufficiente, depositato sulla rootchain. Opzionalmente, il sistema consente agli operatori di nominare uno o più operatori che agiscono per suo conto, con o senza vincoli extra. L'operatore agisce come un client leggero nella rootchain, e come un nodo completo nella subchain per
+confermare nuovi blocchi.
+Nel complesso, le proprietà di rootchain e subchain sono riassunte in Tabella \ref{table:rootchainandsubchains}
+
+\begin{table}[tp]%
+	\caption{Confronto tra Rootchain e Subchain}
+	\label{table:rootchainandsubchains}\centering %
+	\begin{tabular}{l|l|l}
+		\hline
+		\textbf{Proprietà}          & \textbf{Rootchain}   & \textbf{Subchain}  \\
+		\hline
+		Pubblica vs Privata         & Pubblica             & Pubblica o Privata \\
+		Scalabile                   & Necessario           & Varia              \\
+		Robusta                     & Fortemente Richiesto & Richiesto          \\
+		Incentrata sulla Privacy    & Richiesto            & Varia              \\
+		Estendibilità               & Non-Turing completa  & Turing completa    \\
+		Finalità Istantanea Blocchi & Richiesta            & Richiesta          \\
+		\hline
+	\end{tabular}
+\end{table}
 
 \pagebreak
 
