@@ -124,7 +124,24 @@ sono più importanti, ed essi sono noti come il livello verticale di amministraz
 
 \end{itemize}
 
+\subsection{Modelli Operazionali}
+Le blockchain possono essere categorizzati come "non autorizzate" ed "autorizzate" a seconda di come sono gestite. Ad esempio, Bitcoin è senza autorizzazione il che significa che chiunque può creare un indirizzo e iniziare a interagire con la rete, questo viene chiamato "costruire fiducia dalla mancanza di affidabilità". Al contrario, la blockchain autorizzata è un ecosistema chiuso e monitorato dove l'accesso di ciascun partecipante è defnito e differenziato in base al ruolo, questo viene chiamato "costruire fiducia da meno affidabilità".
+Vi sono vantaggi e svantaggi in ciascun approccio. Ad ogni moto, tutte queste considerazioni si riducono a compromessi di design fondamentali tra fiducia, scalabilità, elaborazione e complessità. Ad esempio, Bitcoin ed Ethereum sono blockchain costruite su nodi non affidabili, perché la scalabilità è fortemente desiderata. Quindi, o è richiesta molta elaborazione (nel caso del PoW), oppure è necessario un meccanismo di consenso più sofisticato. Al contrario, Fabric \cite{14} è una blockchain autorizzata in cui tutti i nodi sono considerati affidabili e hanno identità crittografiche, ad esempio, rilasciate grazie ai servizi di membri come il Public Key Infrastructure (PKI), il che li rende altamente scalabili con poca elaborazione e un meccanismo di consenso relativamente semplice.
 
+\begin{table}[tp]%
+	\caption{Proprietà delle Blockchain: Benefici per l'IoT}
+	\label{table:BlockchainBenefits}\centering %
+	\begin{tabular}{l|l}
+		\hline
+		Proprietà della Blockchain  & Benefici per l'IoT       \\
+		\hline
+		Decentralizzazione          & Stabilità, Privacy       \\
+		Bizantine Fault Tolerance   & Disponibilità, Sicurezza \\
+		Trasaprenza \& Immutabilità & Assicurazione di Fiduca  \\
+		Programmabilità             & Estendibilità            \\
+		\hline
+	\end{tabular}
+\end{table}
 
 \pagebreak
 
