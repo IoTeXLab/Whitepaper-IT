@@ -213,7 +213,7 @@ IoTeX è una rete di molte blockchain disposte gerarchicamente, dove le blockcha
 ambienti simili, o condividono un livello di fiducia simile. Se una subchain non funziona bene, ad esempio se viene attaccata o si verificano bug del software, la rootchain rimane completamente inalterata. Inoltre, sono supportate transazioni tra blockchain per trasferire valore e dati dalle subchain alla rootchain, oppure tra una subchain e l'altra attraverso la rootchain.
 
 \begin{figure}[h]
-	\includegraphics[width=\textwidth]{figura1}
+	\includegraphics[width=\textwidth]{Figura1.png}
 	\caption{IoTeX: Blockchain in blockchain, una architettura di rootchain con subchain}
 \end{figure}
 
@@ -250,6 +250,25 @@ Nel complesso, le proprietà di rootchain e subchain sono riassunte in Tabella \
 		\hline
 	\end{tabular}
 \end{table}
+
+\subsection{Blockchain Root}
+La blockchain root utilizza il modello basato su UXTO come Bitcoin \cite{21} e Monero \cite{20} per i seguenti motivi:
+
+\begin{itemize}
+	\item
+	      L'ordinamento delle transazioni diventa banale, senza richiedere \emph{nonce} o
+	      numeri di sequenza, il che pone richieste minime sugli schemi di consenso e permette di elaborare le transazioni in parallelo;
+	\item
+	      Applicando tecniche esistenti di conservazione della privacy come \emph{ring signature} e ZKSNARKs, diventa possibile nascondere il mittente, il destinatario e l'importo della transazione;
+\end{itemize}
+
+La blockchain radice è composta da blocchi collegati da hash, ed un blocco è costituito da  un'intestazione lo collega mediante un hash al blocco precedente, e da un elenco di transazioni.
+La rootchain consente principalmente due tipi di transazione: (1) transazioni di base incluse
+\texttt{P2PKH, P2SH, Multisig} e così via, e transazioni avanzate che consentono
+operazioni tra blockchain come \texttt{BondedRegistration, Lock, ReLock, Reorg} ecc.. Le
+transazioni validate vengono aggiunte ad un blocco che ha dimensione dinamica, con limite superiore di 8MB. Il nostro sistema di consenso produce un blocco ogni tre secondi come dettagliato
+nella prossima sezione. La rootchain è progettata per essere non-Turning-Completa con il
+supporto di uno script basato su stack e un ricco set di operazioni.
 
 \pagebreak
 
