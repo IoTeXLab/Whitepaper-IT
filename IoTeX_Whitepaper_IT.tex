@@ -143,7 +143,7 @@ Vi sono vantaggi e svantaggi in ciascun approccio. Ad ogni moto, tutte queste co
 \end{table}
 
 \section{Benefici e Sfide di Blockchain e IoT}
-Sensazione e percezione, trasformazione, trasmissione ed elaborazione sono l'essenza delle entità più intelligenti su questo pianeta. Per l'IoT, mentre i livelli di sensazione e percezione è distribuito per definizione, gli ultimi due al momento non lo sono, e ciò è la fonte della maggior parte dei problemi di scalabilità, privacy ed estendibilità. Possiamo immaginare la tecnologia blockchain, se essa funge da midollo spinale e sistema nervoso dell'IoT, come il miglior candidato per affrontare i problemi specifici di questo mondo precedentemente menzionati.
+Sensazione e percezione, trasformazione, trasmissione ed elaborazione sono l'essenza delle entità più intelligenti su questo pianeta. Per l'IoT, mentre i livelli di sensazione e percezione è distribuito per definizione, gli ultimi due al momento non lo sono, e ciò è la fonte della maggior parte dei problemi di scalabilità, privacy ed estendibilità. Possiamo immaginare la tecnologia blockchain, se essa funge da spina dorsale e sistema nervoso dell'IoT, come il miglior candidato per affrontare i problemi specifici di questo mondo precedentemente menzionati.
 
 
 \subsection{Benefici}
@@ -190,6 +190,23 @@ Pertanto, la maggior parte delle blockchain esistenti sono troppo pesanti per l'
 
 \subsection{Lavori correlati}
 IOTA, che è stata rilasciata di recente, è costruita sulla base di una tecnologia non convenzionale conosciuta come Tangle \cite{24}. IOTA cerca di disaccoppiare il meccanismo di transizione dello stato da quello di normalizzazione del consenso, eliminando concetti come blocchi e catena. Al contrario, ch emitte le transazioni è anche lo stesso che le approva e la verifica delle transazione viene realizzata utilizzando un grafico aciclico diretto (DAG) per effettuare la transazione in modo veloce e a costo zero. L'efficienza si ottiene grazie alla perdita stati definiti globalmente, il che rende funzionalità desiderabili quali il Simple Payment Verifcation (SPV) per i client leggeri, e gli smart contract abbastanza impegnativi. IoT Chain (ITC) \cite{16}, un'altra blockchain per l'IoT è un progetto fondato in Cina, eredita la stessa struttura del Tangle da IOTA, e dunque ha gli stessi vantaggi e imiti. HDAC \cite{13} è un'altra blockchain recentemente proposta per l'IoT in Corea, che collabora con il Gruppo Hyundai, e si concentrerà su altri settori specifici dell'IoT come l'autenticazione dei dispositi e le transazioni Machine-to-Machine (M2M).
+
+
+\section{IoTeX: panoramica su architettura e design}
+
+\subsection{Principio di progettazione}
+IoTeX mira a diventare la spina dorsale ed il sistema nervoso scalabile e incentrato sulla privacy dedicato all'IoT. Per raggiungere questo obiettivo e affrontare le sfide citate, la nostra architettura il design della nostra architettura è basato sui seguenti princìpi.
+
+\subsubsection{Separazione delle responsabilità}
+Connettere direttamente tutti i nodi IoT in una singola blockchain è un sogno che non può essere realizzato. Oltre al fatto che le diverse applicazioni IoT richiedono fondamentalmente diversi insiemi di funzionalità della blockchain, ospitare ogni nodo IoT sulla stessa blockchain la farebbe crescere rapidamente in dimensioni e richiesta computazionale, e alla fine diventerebbe troppo pesante per molti Dispositivi IoT. Invece, una separazione delle funzioni assicura che ogni blockchain interagisca con un gruppo specifico di nodi IoT e, allo stesso tempo, interagisca con altre blockchain quando necessario. Analogamente a quanto accade per Internet, dispositivi eterogenei prima formano un gruppo interconnesso, la intranet; intranet più piccole possono ulteriormente formare una intranet più grande, che alla fine si connette alla spina dorsale di internet e comunicano l'un l'altro. 
+La "Separazione delle responsabilità" di solito crea un sistema ben bilanciato per massimizzare sia l'efficienza che la privacy.
+
+\subsubsection{Il Rasoio di Occam}
+Diverse blockchain hanno utilizzi e applicazioni diverse, e dovrebbero essere progettate e ottimizzate verso direzioni diverse. Ad esempio, una blockchain dedicata all'inoltro delle transazioni tra le sue subchain non necessita su di essa vengano eseguiti smart-contract Turing-Completi; un'altra blockchain che colleghi dispositivi appartenenti alla stessa zona di fiducia non dovrebbe preoccuparsi troppo della privacy transazionale.
+
+\subsubsection{IoT amichevole}
+Come già detto, il mondo IoT è pieno di sistemi e nodi eterogenei, più o meno potenti in termini di risorse di calcolo, archiviazione e potenza. Dal momento che le operazioni che possono essere eseguite dai nodi deboli possono anche essere facilmente eseguite da quelli forti, le operazioni sulla blockchain dovrebbero essere progettate e ottimizzate per i nodi deboli, ovvero le operazioni dovrebbero essere abbastanza leggere da risparmiare risorse come potenza di calcolo, spazio di archiviazione ed energia.
+
 
 \pagebreak
 
