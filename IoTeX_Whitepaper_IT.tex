@@ -270,6 +270,26 @@ transazioni validate vengono aggiunte ad un blocco che ha dimensione dinamica, c
 nella prossima sezione. La rootchain è progettata per essere non-Turning-Completa con il
 supporto di uno script basato su stack e un ricco set di operazioni.
 
+\subsection{Subchain}
+IoTeX dispone di un framework per lo sviluppo e la fornitura di una subchain su misura
+per applicazioni IoT decentralizzate incapsulando primitive a basso livello come il protocollo gossip
+ed il meccanismo di consenso. Il modello di autorizzazione, le specifiche, i parametri,
+e i tipi di transazione della subchain possono essere personalizzati per adattarsi alla sua applicazione.
+Le subchain IoTeX utilizzano il modello basato sull'account, che è migliore per il tracciamento delle transizioni di stato.
+Esistono due tipi di account, similmente a Ethereum, account regolari e
+contratti. Le transazioni valide vengono aggiunte al blocco, che viene generato dallo stesso
+schema di consenso della catena principale per raggiungere lo stesso livello di finality per rendere la comunicazione cross-chain più efficiente. Le subchain possono sia utilizzare il token della rootchain, IoTeX, oppure definire il proprio token. Il token definito dagli sviluppatori per le subchain possono essere distribuiti mediante vendita pubblica di token oppure scambiati sugli exchange pubblici.
+Le subchain supportano smart contract, che vengono eseguiti su una macchina virtuale leggera ed efficiente. Attualmente stiamo valutando Web Assembly (WASM) \cite{36}, uno standard Web emergente per la creazione di applicazioni Web ad alte prestazioni. WASM è veloce ed efficiente, può essere reso deterministico e dotato di sandbox a seguito di piccole modifiche così come tentato dal progetto EOS \cite{9}. Anche altre opzioni vengono esplorate. Grazie agli smart contract, i dispositivi IoT collegati alla stessa subchain usano lo stato condiviso in due modi,
+
+\begin{itemize}
+	\item Innanzitutto, i dispositivi possono interagire con l'ambiente fisico in base agli stati delle loro subchain, ad es. le lampadine si accendono o spengono autonomamente in base allo stato di un orologio sulla stessa subchain;
+
+	\item D'altra parte, i dispositivi possono cambiare il proprio stato sulla subchain quando
+	      quando l'ambiente fisico cambia, ad esempio, il termostato aggiorna la temperatura tramite uno smart contract in base ai dati provenienti dal suo sensore;
+\end{itemize}
+
+
+
 \pagebreak
 
 \bibliography{bibliography}
