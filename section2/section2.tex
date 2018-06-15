@@ -1,0 +1,48 @@
+\section{Blockchain}
+La tecnologia della Blockchain è stata introdotta nel 2008 e la sua prima implementazione, ovvero Bitcoin, è stata introdotta un anno dopo, nel 2009, pubblicata nel documento \emph{Bitcoin: A Peer-to-Peer Electronic Cash System} \cite{c21} di Satoshi Nakamoto (pseudonimo). Essenzialmente, la blockchain è un database transazionale distribuito, condiviso tra tutti i nodi partecipanti nella rete. Questa è la principale innovazione tecnica di Bitcoin, ed agisce come un registro pubblico per le transazioni. Ogni nodo nel sistema ha una copia completa dello stato attuale della blockchain, che contiene ogni transazione che sia mai stata eseguita. Ogni blocco della blockchain contiene un hash del blocco precedente, che collega i due blocchi insieme. Tutti i collegati tra loro diventano una blockchain.
+
+\subsection{Ingredienti}
+Una blockchain può essere percepita come un continuum tetra-dimensionale avente tre livelli orizzontali che includono transazioni e blocchi, consenso, interfaccia di calcolo, e amministrazione (\emph{governance}), l'unico livello verticale.
+
+\subsubsection{Transazioni e blocchi}
+Essendo il livello orizzontale più in basso, le transazioni firmate vengono trasmesse tra tutti i nodi e i blocchi vengono generati dai nodi completi (\emph{full nodes}). Questa e la base della blockchain dove il trasferimento di beni digitali (e dunque il valore a loro associato) e la sicurezza degli account si ottengono attraverso primitive come firma a curva ellittica, funzione hash e Merkle tree.
+
+\subsubsection{Consenso}
+Il livello orizzontale intermedio mostra la natura peer-to-peer della blockchain, dove tutti i nodi all'interno della rete raggiungono il consenso su tutti gli stati interni della catena  attraverso tecniche come Proof of Work (PoW), Proof of Stake (PoS) e le loro varianti, Byzantine fault tolerance (BFT) a le sue varianti, \emph{etc}. Il livello di consenso interessa principalmente la scalabilità. Il PoW viene tipicamente considerato meno scalabile rispetto al PoS. Inoltre, questo livello ha un forte impatto sulla sicurezza in termini di doppia spesa ed altri attacchi che si concentrano sul modificare gli stati della blockchain in modi inattesi.
+
+\subsubsection{Interfaccia di calcolo}
+I primi due livelli orizzontali realizzano la forma di una blockchain mentre il livello di interfaccia di calcolo è fondamentale per rendere utile una blockchain, il che comprende estendibilità ed usabilità. Ad esempio, Ethereum ha implementato un lo smart contract per
+consentire la programmabilità in modo da poter contare sul "computer mondiale" distribuito per l'esecuzione dei termini di un contratto. Anche il sidechain, insieme con il mining congiunto, sono stati sviluppati in modo intensivo per supportare la programmabilità. In protocolli di secondo livello come la rete Raiden \cite{c25}, è stato sviluppato il canale di stato per estendere la scalabilità della blockchain a questo livello. Inoltre, anche strumenti, SDK, framework ed interfacce grafiche sono
+estremamente importanti per l'usabilità. Il livello di interfaccia di calcolo offre agli sviluppatori la possibilità di sviluppare app decentralizzate (DApps), una parte essenziale per rendere la blockchain utile e preziosa.
+
+\subsubsection{Amministrazione}
+Come per gli organismi, le blockchain di maggior successo saranno quelle che riusciranno ad adattarsi meglio al loro ambiente. Supponendo che questi sistemi debbano evolversi per sopravvivere, il progetto iniziale è importante ma, nel lungo termine, i meccanismi per il cambiamento
+sono più importanti, ed essi sono noti come il livello verticale di amministrazione (\emph{governance}). Ci sono due componenti critici della governance:
+\begin{itemize}
+	\item
+	      Incentivo: ogni gruppo nel sistema ha i propri incentivi. Gli incentivi non sono sempre allineati al 100\% con tutti gli altri gruppi nel sistema. I gruppi proporranno nel tempo cambiamenti che sono vantaggiosi per loro. Gli organismi sono di parte rispetto alla propria sopravvivenza. Ciò normalmente si manifesta in cambiamenti nella struttura retributiva, nella politica monetaria o in equilibri di potere.
+
+	\item
+	      Coordinamento: poiché è improbabile che tutti i gruppi abbiano un allineamento sugli incentivi del 100\% tutte le volte, la capacità di ciascun gruppo di coordinarsi attorno ai propri incentivi comuni è fondamentale per loro per produrre un cambiamento. Se un gruppo riesce a  coordinarsi meglio di un altro, crea uno squilibrio di potere a proprio favore. In pratica, un fattore decisivo è quanto coordinamento si può realizzare sulla blockchain (ad es. voti alle regole del sistema come Tezos \cite{c34}, o addirittura ripristinare il registro se gli azionisti di maggioranza non gradiscono una modifica) rispetto a quello realizzabile fuori dalla blockchain (come per i Bitcoin Improvement Proposals (BIPs)
+	      \cite{c3}).
+
+\end{itemize}
+
+\subsection{Modelli Operazionali}
+Le blockchain possono essere categorizzati come "non autorizzate" ed "autorizzate" a seconda di come sono gestite. Ad esempio, Bitcoin è senza autorizzazione il che significa che chiunque può creare un indirizzo e iniziare a interagire con la rete, questo viene chiamato "costruire fiducia dalla mancanza di affidabilità". Al contrario, la blockchain autorizzata è un ecosistema chiuso e monitorato dove l'accesso di ciascun partecipante è defnito e differenziato in base al ruolo, questo viene chiamato "costruire fiducia da meno affidabilità".
+Vi sono vantaggi e svantaggi in ciascun approccio. Ad ogni moto, tutte queste considerazioni si riducono a compromessi di design fondamentali tra fiducia, scalabilità, elaborazione e complessità. Ad esempio, Bitcoin ed Ethereum sono blockchain costruite su nodi non affidabili, perché la scalabilità è fortemente desiderata. Quindi, o è richiesta molta elaborazione (nel caso del PoW), oppure è necessario un meccanismo di consenso più sofisticato. Al contrario, Fabric \cite{c14} è una blockchain autorizzata in cui tutti i nodi sono considerati affidabili e hanno identità crittografiche, ad esempio, rilasciate grazie ai servizi di membri come il Public Key Infrastructure (PKI), il che li rende altamente scalabili con poca elaborazione e un meccanismo di consenso relativamente semplice.
+
+\begin{table}[tp]%
+	\caption{Proprietà delle Blockchain: Benefici per l'IoT}
+	\label{table:BlockchainBenefits}\centering %
+	\begin{tabular}{l|l}
+		\hline
+		Proprietà della Blockchain  & Benefici per l'IoT       \\
+		\hline
+		Decentralizzazione          & Stabilità, Privacy       \\
+		Bizantine Fault Tolerance   & Disponibilità, Sicurezza \\
+		Trasaprenza \& Immutabilità & Assicurazione di Fiduca  \\
+		Programmabilità             & Estendibilità            \\
+		\hline
+	\end{tabular}
+\end{table}

@@ -1,0 +1,48 @@
+\section{Benefici e Sfide di Blockchain e IoT}
+Sensazione e percezione, trasformazione, trasmissione ed elaborazione sono l'essenza delle entità più intelligenti su questo pianeta. Per l'IoT, mentre i livelli di sensazione e percezione è distribuito per definizione, gli ultimi due al momento non lo sono, e ciò è la fonte della maggior parte dei problemi di scalabilità, privacy ed estendibilità. Possiamo immaginare la tecnologia blockchain, se essa funge da spina dorsale e sistema nervoso dell'IoT, come il miglior candidato per affrontare i problemi specifici di questo mondo precedentemente menzionati.
+
+
+\subsection{Benefici}
+Abbracciando la tecnologia blockchain, l'IoT beneficia immediatamente dei seguenti aspetti, grazie alle proprietà della blockchain, che includono la decentralizzaizione, il Byzantine Fault Tolerance, la trasparenza e l'immutabilità. La Tabella 1 riassume come queste proprietà della blockchain beneficiano l'IoT.
+
+
+\subsubsection{Decentralizzazione}
+La decentralizzazione libera gli utenti e i dispositivi dal monitoraggio esteso controllato in modo centralizzato, dunque affrontando in parte i timori riguardanti la vita privata imposte dalle entità centralizzate che monopolizzano il mercato e cercano di capire ogni aspetto degli utenti o dei dispositivi a loro beneficio, ad es. per comunicazioni pubblicitarie. La decentralizzazione, nel contesto della criptoeconomia, indica anche \"elasticità\", spesso definita come \"il livello al quale un sistema è in grado di adattarsi alle variazioni del carico di lavoro mediante allocazione e deallocazione di risorse in maniera autonoma, in modo tale che in ogni momento nel tempo le risorse disponibili soddisfino il più possibile la domanda corrente\". Una blockchain con la sottostante criptoeconomia può essere progettata in modo sufficientemente elastico ed economicamente conveniente per gli scenari e le applicazioni IoT. Ad esempio, con gli  incentivi sufficienti per farlo, potrebbero attivarsi ulteriori nodi nella blockchain qualora la rete avesse abbastanza attività da elaborare.
+
+\subsubsection{Byzantine Fault Tolerance (BFT)}
+L'obiettivo delByzantine Fault Tolerance (BFT) è quello di difendersi dai guasti nei componenti
+di un sistema che possono fallire in modo arbitrario, cioè non solo fermandosi o andando in crash, ma mediante l'elaborazione errata delle richieste, corrompendo il loro stato locale e/o producendo risultati errati o incoerenti. Il Byzantine Fault Tolerance modella gli ambienti del mondo reale in cui computer e reti possono comportarsi in modi imprevisti a causa di guasti dell'hardware, congestione della rete e disconnessioni, nonché attacchi malevoli. La proprietà del BFT può essere sfruttata per ottenere molte caratteristiche desiderate riguardanti la sicurezza nel contesto dell'IoT, ad esempio elimina gli attacchi del tipo man-in-the-middle (MITM) in quanto non esiste un singolo flusso di comunicazione che può essere intercettato e manomesso, e rende gli attacchi del tipo Denial of Service (Dos) quasi impossibili.
+
+\subsubsection{Trasparenza e immutabilità}
+La Blockchain fornisce la sicurezza crittografica che i dati all'interno della catena di blocchi sono sempre trasparenti e immutabili, il che può essere utile in molti scenari, ad esempio, ancorando stati del mondo IoT sulla blockchain al fine dell'auditing, dell'autenticazione notarile e l'analisi forense, gestione delle identità, autenticazione ed autorizzazione.
+
+\subsubsection{Programmabilità}
+Il Bitcoin è stato realizzato con un livello di programmabilità di base, per consentire ad una transazione di essere eseguita solo se il piccolo script sottostante viene eseguito correttamente. Ethereum migliora questa caratteristica
+fornendo smart contract Turing-completi che vengono scritto in un linguaggio di programmazione di alto livello ed eseguiti in una piccola macchina virtuale nota come EVM. Questa programmabilità potrebbe e dovrebbe essere estesa ai dispositivi IoT, alcuni dei quali al momento dispongono solo di una logica semplice e già codificata, che non può essere ulteriormente programmata una sola volta consegnati.
+
+\subsection{Sfide}
+Beneficiare delle tipiche proprietà fornite dalle blockchain non significa che ogni blockchain è adatta per l'uso nell'IoT. In realtà, sembra che nessuna delle blockchain pubbliche esistenti possa essere applicata all'IoT poiché ci sono alcuni problemi difficili da affrontare.
+
+\subsubsection{Garantire la privacy nativamente non basta}
+Le garanzie sulla privacy, intrinseche della blockchain, possono solo aiutare ad affrontare il problema della privacy
+nell'IoT nella misura in cui essa conserva i dati su un registro decentralizzato piuttosto che su server centralizzati, usando la pseudonimia. Tuttavia, se lo pseudonimo di un dispositivo venisse messo in relazione con la sua identità, tutto ciò che è mai stato fatto sotto quello pseudonimo sarà ora collegato a quel dispositivo.
+
+\subsubsection{La "pallottola d'argento" tra le blockchain non esiste}
+Come accennato in precedenza, L'IoT è un universo di sistemi e dispositivi eterogenei con differenti scopi e capacità. È impossibile trovare una "pallottola d'argento" tra le possibili di blockchain, una soluzione che si adatti alla maggior parte degli scenari. Ad esempio, una blockchain per il coordinamento di milioni di nodi IoT industriali dovrebbe concentrarsi sull'elevata scalabilità e sul volume delle transazioni, mentre una blockchain per il coordinamento di dispositivi domestici intelligenti dovrebbe concentrarsi sulla privacy e sull'estendibilità. A livello macroscopico, i dispositivi IoT, come una specie a sé stante, sono in continua evoluzione ad un ritmo molto veloce: nuove tecnologie vengono integrate, nuovi standard sviluppati nuovi dispositivi realizzati e con nuove funzionalità. D'altra parte, ad un livello microscopico, anche la capacità, lo scopo e l'ambiente operativo del singolo dispositivo IoT cambiano nel tempo.
+
+\subsubsection{Le operazioni sulla blockchain sono pesanti}
+Nel mondo IoT, molti dispositivi sono considerati nodi deboli perché essi sono:
+\begin{itemize}
+	\item
+	      Incapaci di eseguire il "mining" basato su PoW a causa della limitata potenza di calcolo;
+	\item
+	      Incapaci di memorizzare grandi quantità di dati (ad es. a livello di gigabyte, se non di terabyte o di petabyte) a causa dei vincoli di archiviazione ed alimentazione;
+	\item
+	      Incapaci di verificare tutte le transazioni elaborando l'intera blockchain;
+	\item
+	      Incapaci di connettersi sempre con gli altri nodi, a seconda della disponibilità online e della qualità della connessione;
+\end{itemize}
+Pertanto, la maggior parte delle blockchain esistenti sono troppo pesanti per l'IoT.
+
+\subsection{Lavori correlati}
+IOTA, che è stata rilasciata di recente, è costruita sulla base di una tecnologia non convenzionale conosciuta come Tangle \cite{c24}. IOTA cerca di disaccoppiare il meccanismo di transizione dello stato da quello di normalizzazione del consenso, eliminando concetti come blocchi e catena. Al contrario, ch emitte le transazioni è anche lo stesso che le approva e la verifica delle transazione viene realizzata utilizzando un grafico aciclico diretto (DAG) per effettuare la transazione in modo veloce e a costo zero. L'efficienza si ottiene grazie alla perdita stati definiti globalmente, il che rende funzionalità desiderabili quali il Simple Payment Verifcation (SPV) per i client leggeri, e gli smart contract abbastanza impegnativi. IoT Chain (ITC) \cite{c16}, un'altra blockchain per l'IoT è un progetto fondato in Cina, eredita la stessa struttura del Tangle da IOTA, e dunque ha gli stessi vantaggi e imiti. HDAC \cite{c13} è un'altra blockchain recentemente proposta per l'IoT in Corea, che collabora con il Gruppo Hyundai, e si concentrerà su altri settori specifici dell'IoT come l'autenticazione dei dispositi e le transazioni Machine-to-Machine (M2M).
