@@ -1,0 +1,101 @@
+\section{Transazioni con Conservazione della Privacy Integrate}
+La privacy fornita in modo nativo da Bitcoin ed Ethereum è limitata alla pseudonimia. I dettagli della transazione non sono riservati. L'importo della transazione ed i beni trasferiti, i loro metadati e le relazioni con altre transazioni possono essere banalmente verificate da chiunque. In effetti, in questo contesto, ci sono tre aspetti della privacy: la privacy del mittente, la privacy del destinatario e la privacy dei dettagli della transazione. Vari schemi crittografici possono essere applicati per affrontarli, come mostrato nella Tabella \ref{table:PrivacyPreservingTechniques}.
+
+\begin{table}[tp]%
+	\caption{Tecniche di Conservazione della Privacy per le Blockchain}
+	\label{table:PrivacyPreservingTechniques}\centering %
+	\begin{tabular}{l|p{2cm}c|p{2.5cm}|p{2cm}}
+		\hline
+		Tecnica              & Nasconde il Mittente & Nasconde il destinatario & Nasconde l'Importo \\
+		\hline
+		Stealth Address      & N                    & Y                         & N                  \\
+		Pedersen Commitments & N                    & N                         & Y                  \\
+		Ring Signatures      & Y                    & N                         & N                  \\
+		zk-SNARKs            & Y                    & N                         & Y                  \\
+		\hline
+	\end{tabular}
+\end{table}
+
+IoTeX integra lo stealth address per la privacy del destinatario, la ring signature per la privacy del mittente ed il Pedersen Commitments per nascondere l'importo della transazione, con le seguenti innovazioni e miglioramenti:
+
+\begin{itemize}
+	\item Uno schema di indirizzo invisibile leggero è progettato per esentare i destinatari dalla scansione
+	      l'intera blockchain per essere a conoscenza delle transazioni in entrata;
+
+	\item La ring signature è ottimizzata per ridurne le dimensioni con una configurazione distribuita di tipo trusted.
+\end{itemize}
+
+
+\subsection{Nascondere il destinatario della transazione mediante Codice di Pagamento Inoltrabile}
+
+\subsubsection{Stealth Address}
+La tecnica dello stealth address nasce dal protocollo Cryptonote \cite{c28}, che risolve il problema del destinatario utilizzando un protocollo di scambio di chiavi Diffie-Hellman a "mezzo giro". Supponendo che Bob voglia nascondere il fatto che riceverà dei token da Alice, ecco come funzionerebbe:
+
+\begin{enumerate}
+	\item Bob crea due coppie di chiavi private e pubbliche, indicate come $(a, A)$ e $(b, B)$, dove $A = a\cdot G$ e $B = b\cdot G$, dove $G$ è il punto base su una curva ellittica.
+
+	\item Bob divulga le chiavi pubbliche $(A, B)$, note come il suo stealth address;
+
+	\item Alice calcola e invia i token a $P = H (rA)\cdot G + B$ usando una funzione hash $H$, un numero casuale e grande $r$  e lo stealth address di Bob $B$. Questa transazione viene trasmessa insieme a $R = r\cdot G$;
+	\item  Bob monitora tutte le transazioni, calcola $P' = (H(aR) + b)\cdot G$ (poiché egli conosce $a$, $b$, $R$ e $G$) con la speranza che $P'$ sia uguale a $P$. Se $P' = P$, Bob potrà spendere i token inviati a $P'$ con la chiave privata $H(aR) + b$.
+\end{enumerate}
+
+Un ovvio inconveniente dello stealth address è che il destinatario deve scansionare tutte le transazioni della rete (il che non è l'ideale nel mondo IoT) oppure deve basarsi sull'assistenza di un full node di fiducia (il che a un certo livello compromette la privacy).
+
+\subsubsection{Codice di pagamento}
+Il codice di pagamento è stato ideato per risolvere l'inconveniente di cui sopra, relativo allo stealth address sacrificando in parte la privacy. L'idea è che Alice notifichi a Bob un codice di pagamento in un modo confidenziale, e Bob monitori solo le transazioni verso gli indirizzi derivanti da quel codice. Pertanto, questa proposta presenta due flussi: quello della notifica, che rappresenta una configurazione una-tantum tra certe due parti, e quello di invio, che può accadere più volte tra queste due parti.
+
+Supponendo che Alice abbia una coppia di chiavi pubblica-privata principali ($mpub_{Alice}, mpri_{Alice}$) dove $mpub_{Alice} = mpri_{Alice}\cdot G$, ed una coppia di chiavi pubbliche-private di portafoglio ($wpub_{Alice}, wpri_{Alice}$) dove $wpub_{Alice} = wpri_{Alice}\cdot G$; che Bob abbia una coppia di chiavi pubblica-privata principali $(mpub_{Bob}; mpri_{Bob})$ dove $mpub_{Bob} = mpri_{Bob}\cdot G$, la notifica una tantum funziona come descritto di seguito:
+
+\begin{enumerate}
+    \item Bob deriva $B_0 = b_0\cdot G = (mpri_{Bob} + Hash(0, seed, metadata))\cdot G$, lo converte in un indirizzo di notifica $\texttt{addr}(B_0)$, lo pubblica e si mette in ascolto su di esso
+
+    \item  Alice sceglie un chain code $cc$ a caso; $(mpub_{Alice}||cc)$ è il codice di pagamento per Alice;
+
+    \item  Alice calcola un codice segreto condiviso $S = wpri_{Alice}\cdot B_0$ ed invia il codice di  pagamento mascherato $P' = (mpub_{Alice}||cc)\oplus HMAC512(xofS)$ ad $\texttt{addr}(B_0)$;
+
+    \item Al ricevimento, Bob ottiene $wpub_{Alice}$ e recupera $S = wpub_{Alice}\cdot b_0$, scopre $P'$ per ottenere $(mpub_{Alice}||cc)$.
+\end{enumerate}
+
+Una volta che il flusso di notifica è completo, Alice e Bob stabiliscono un canale privato unidirezionale per l'invio di token. Il primo invio funziona come descritto di seguito:
+
+\begin{enumerate}
+    \item Alice deriva un nuovo indirizzo dal suo codice di pagamento (che è già condiviso von Bob) da $A_0 = a_0\cdot G = mpub_{Alice} + Hash(0, seed, metadata)\cdot G$;
+
+    \item Alice seleziona la successiva chiave pubblica non ancora utilizzata, derivata da $B_0$. Si noti che $B_0$ è la chiave pubblica inutilizzata per il primo round.
+
+   \item Alice calcola il nuovo codice segreto condiviso $S_0 = a_0\cdot B_0$ e calcola la chiave pubblica temporanea utilizzata per inviare la transazione per cui si verifica $B'_0 = B_0 + SHA256(S_0)\cdot G$
+
+   \item Bob potrebbe derivare $A_0$ in modo non interattivo poiché conosce il codice di pagamento di Alice, e ascolta solo l'indirizzo derivato da $B'_0 = B_0 + SHA256(S_0)\cdot G$ ed $S_0 = A_0\cdot b_0$.
+
+   \item Alla ricezione, Bob può spendere i token con la chiave privata $b_0 + SHA256(S_0)$.
+
+\end{enumerate}
+
+I flussi successivi funzionano in maniera analoga.
+Bob non ha bisogno di monitorare la rete o affidarsi a un full node per eseguire la scansione di tutte le transazioni. La transazione di notifica fa trapelare l'intenzione di Alice di inviare qualcosa a
+Bob, ma l'effettivo "invio di qualcosa" è nascosto a tutti gli altri.
+
+\subsubsection{Codice di Pagamento Inoltrabile}
+Per ridurre ulteriormente la perdita di privacy, abbiamo progettato il codice di pagamento inoltrabile basandoci sulla codice di pagamento originariamente proposto. Mentre il flusso di invio rimane lo stesso, abbiamo migliorato il flusso di notifica per consentire ad Alice di condividere segretamente il suo codice di pagamento con Charlie senza utilizzare la transazione di notifica, assumendo che Alice e Bob abbiano un canale privato unidirezionale, e Bob e Charlie abbiano un altro
+canale privato unidirezionale. Per ottenere ciò, sfruttiamo i contratti Hashed Timelock (HTLC - \emph{Hashed TimeLock Contracts}), i quali richiedono che il destinatario di un pagamento confermi la ricezione di un pagamento prima di una deadline generando una \emph{proof of payment} crittografata, oppure rinunci alla possibilità di reclamare il pagamento, restituendolo al mittente.
+
+
+Supponendo che Charlie abbia una coppia di chiavi pubblica-privata $(mpub_{Charlie}, mpri_{Charlie})$ dove $mpub_{Charlie} = mpri_{Charlie}\cdot G$. Il flusso di notifica migliorato funziona come illustrato di seguito:
+
+\begin{enumerate}
+    \item Charlie deriva $C_0 = c_0\cdot G = (mpri_{Charlie} + Hash(0, seed, metadata))\cdot G$, lo converte in un indirizzo di notifica $\texttt{addr}(C0)$, lo pubblica. Si noti che $C_0$ è pubblicato per Alice al fine calcolare il codice segreto condiviso, ma non per ricevere     transazioni;
+
+    \item Alice genera il suo codice di pagamento $(mpub_{Alice}||cc)$ nello stesso modo;
+
+    \item Alice calcola un codice segreto condiviso $S = wpri_{Alice}\cdot C_0$ e invia il codice di pagamento mascherato $P' = (mpub_{Alice}||cc) \oplus HMAC512(xofS)$ con $X$ token come incentivo e $HTLC(Hash^2(cc))$ a Bob usando il loro canale privato unidirezionale, dove $HTLC$, come parte dello script di blocco o riscatto, afferma che i token diventano
+    spendibili se viene fornita la pre-immagine di $Hash^2(v)$, ovvero $Hash (cc)$;
+
+    \item Bob, incentivato dai token inviati da Alice, invia $P'$, $Y$, $Y < X$ token ed $HTLC(Hash^2(v))$ a Charlie usando il loro canale privato unidirezionale;
+
+    \item Charlie, dopo aver ricevuto la transazione di Bob, calcola $S = wpub_{Alice}\cdot c_0$ per scoprire il codice di pagamento di Alice, e spendere la transazione rivelando $Hash(cc)$, che rende spendibile la transazione da Alice a Bob, che premia Bob.
+\end{enumerate}
+
+Una volta che questo flusso viene completato, Alice e Charlie stabiliscono un canale privato unidirezionale per l'invio di token. È interessante notare che il tragitto della transazione di Alice potrebbe consistere di più salti.
+
+I nostri codici di pagamento inoltrabili offrono una privacy maggiore in termini di occultamento dell'intenzione di "inviare qualcosa" sulla blockchain, sfruttando i canali privati esistenti, e senza aggiungere alcun overhead di elaborazione o di archiviazione ai nodi. Inoltre, sebbene progettati per scenari IoT, i codici di pagamento inoltrabili risultano utilizzabili per la maggior parte delle blockchain come Bitcoin.
