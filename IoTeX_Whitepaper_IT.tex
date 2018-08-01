@@ -1,11 +1,13 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{array}
+\usepackage{enumitem}
 \usepackage[a4paper]{geometry}
-\usepackage[italian]{babel}
+\usepackage[italian, english]{babel}
 \usepackage{amsmath}
 \usepackage{dsfont}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{url}
 \usepackage[utf8]{inputenc}
 \usepackage{bookmark}
 
@@ -72,10 +74,21 @@
 
 \include{section5/section5}
 
+\include{section6/section6}
+
+\include{section7/section7}
+
+\include{section8/section8}
+
+\include{section9/section9}
+
 \pagebreak
 
-\bibliography{bibliography}
+\begin{otherlanguage}{english}
+	\bibliographystyle{plain}
+	\bibliography{bibliography}
+\end{otherlanguage}
 
-\bibliographystyle{plain}
+
 
 \end{document}
