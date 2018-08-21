@@ -1,33 +1,33 @@
 \section{Lavori di ricerca futuri}
-Alcune direzioni di ricerca in corso e future per migliorare IoTeX sono le seguenti.
-\paragraph{Potenza di calcolo riguardo il mantenimento della privacy}
+Alcune direzioni di ricerca già in corso ed altre future per migliorare IoTeX sono indicate di seguito.
+
+\paragraph{Potenza di calcolo per il mantenimento della privacy}
 Ci sono diverse aree in questa direzione che stiamo esplorando attivamente:
 
 \begin{itemize}
-    \item Come mantenere gli stati confidenziali sulla blockchain, che possano essere utilizzati per il calcolo da un certo gruppo di nodi;
+    \item Come mantenere gli stati confidenziali sulla blockchain, in modo che possano essere utilizzati per il calcolo da un certo gruppo di nodi;
 
-\item Smart contract che preserva la privacy, dove lo smart contract può essere valutato quando la sua business logic è protetta dalla crittografia. Mentre la crittografia completamente omofobica \cite{c26} e gli schemi di offuscamento indistinguibile \cite{c11} rappresentano in teoria il Santo Graal,
-proposte pratiche come Hawk \cite{c17} sono promettenti per il prossimo futuro;
+\item Smart contract in grado di preservare la privacy, dove lo smart contract può essere eseguito nonostante la sua business logic sia protetta dalla crittografia. Mentre la crittografia completamente omofobica \cite{c26} e gli schemi di offuscamento indistinguibile \cite{c11} rappresentano il "Santo Graal" solo in teoria, proposte pratiche come Hawk \cite{c17} sono promettenti per il prossimo futuro;
 
-\item Ulteriore del calcolo e dello spazio di archiviazione richiesti dalle tecniche di preservazione della privacy che IoTeX sta attualmente utilizzando;
+\item Ulteriore risuzione dei requisiti computazionali e dello spazio di archiviazione necessari per le tecniche di preservazione della privacy che IoTeX sta attualmente utilizzando;
 
-\item La versione quantum-safe delle tecniche di conservazione della privacy che IoTeX utilizza attualmente, come una ring signature quantum-safe.
+\item La versione quantum-safe delle tecniche di conservazione della privacy che IoTeX utilizza attualmente, ad esempio una ring signature quantum-safe.
 \end{itemize}
 
 
-
 \paragraph{Pruning e Trasferimento degli Stati}
-Stiamo valutando diversi modi per sfoltire in maniera sicura gli stati memorizzati nelle subchain per ridurre l'ingombro di storage dal momento che molti dispositivi IoT dispongono di spazio di archiviazione limitato. La compressione di blocchi e transazioni è sicuramente una soluzione comoda. Inoltre, anche trasferire gli stati da una subchain alla rootchain (dal momento che quest'ultima è più dotata in termini di archiviazione) in maniera efficiente e con salvaguardia della privacy rappresenta un argomento insteressante da indagare.
+Stiamo valutando diversi modi per sfoltire in maniera sicura gli stati memorizzati nelle subchain, per ridurre l'ingombro di storage dal momento che molti dispositivi IoT dispongono di spazio di archiviazione limitato. La compressione di blocchi e transazioni risulta sicuramente una soluzione comoda. Inoltre, anche trasferire gli stati da una subchain alla rootchain (dal momento che quest'ultima è più dotata in termini di spazio di archiviazione) in maniera efficiente e con salvaguardia della privacy rappresenta un argomento insteressante da indagare.
 
-\paragraph{Governance auto-adattante}
+\paragraph{Governance auto-adattativa}
 Mentre la blockchain IoTeX offre incentivi per mantenere il consenso sui suoi registri, per il momento non dispone di un meccanismo in grado di auto-modificare le regole che governano il suo protocollo. Per affrontare ciò, abbiamo in programma di condurre ricerche su governance e auto-modifica.
 
 \paragraph{Blockchain con struttura ad albero}
-L'attuale blockchain IoTeX attuale è a due livelli e, naturalmente, dovrebbe essere estesa a un albero di blockchain sfruttando tecniche come Plasma e Cosmo. Il piano è quello di valutare queste proposte e migliorare l'attuale design di IoTeX ed alla fine supportare strutture gerarchiche più complesse.
+L'attuale blockchain IoTeX ha due livelli e, naturalmente, potrebbe essere estesa a un albero di blockchain sfruttando tecniche simili a quelle utilizzate in Plasma e Cosmo. Il piano è quello di valutare queste proposte e migliorare l'attuale progetto di IoTeX, ed alla fine supportare strutture gerarchiche più complesse.
 
 \section{Conclusioni}
-In questo Whitepaper, abbiamo introdotto IoTeX, una blockchain scalabile, privata ed estendibile dedicata all'Internet of Things, con la sua architettura e le sue tecnologie di base, che includono:
-1. blockchain in blockchain per massimizzare scalabilità e privacy, 2. privacy reale su blockchain basata su codice di pagamento inoltrabile, ring signature a dimensione costante che non richiede configurazione trusted, e implementazione iniziale di bulletproofs, 3. consenso rapido con finalità istantanea basata su VRF e PoS per volumi elevati di transazioni e finalità istantanea e 4. architetture di sistema basate su IoTeX flessibili e leggere.
+In questo Whitepaper, abbiamo introdotto IoTeX, una blockchain scalabile, privata, ed estensibile, dedicata all'Internet of Things, con la sua architettura e le sue tecnologie di base, che includono:
+
+1. Blockchain in blockchain, per massimizzare scalabilità e privacy, 2. privacy totale su blockchain basata su codice di pagamento inoltrabile, ring signature a dimensione costante e senza configurazione trusted, e implementazione iniziale di bulletproofs, 3. consenso rapido con finalità istantanea basata su VRF e PoS per volumi di transazioni elevati e finalità istantanea e 4. architetture di sistema basate su IoTeX flessibili e leggere.
 
 \section{Ringraziamenti}
-Vogliamo esprimere la nostra gratitudine ai nostri mentori e consulenti e alle molte persone nelle comunità dell'IoT, della crittografia e delle criptovalute per i loro primi feedback e i suggerimenti costruttivi.
+Vogliamo esprimere la nostra gratitudine ai nostri mentori e consulenti e alle molte persone nelle comunità dell'IoT, della crittografia e delle criptovalute per i loro feedback iniziali e i suggerimenti costruttivi.
