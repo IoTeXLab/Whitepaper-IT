@@ -9,14 +9,14 @@ Ci sono diverse aree in questa direzione che stiamo esplorando attivamente:
 
 \item Smart contract in grado di preservare la privacy, dove lo smart contract può essere eseguito nonostante la sua business logic sia protetta dalla crittografia. Mentre la crittografia completamente omofobica \cite{c26} e gli schemi di offuscamento indistinguibile \cite{c11} rappresentano il "Santo Graal" solo in teoria, proposte pratiche come Hawk \cite{c17} sono promettenti per il prossimo futuro;
 
-\item Ulteriore risuzione dei requisiti computazionali e dello spazio di archiviazione necessari per le tecniche di preservazione della privacy che IoTeX sta attualmente utilizzando;
+\item Ulteriore riduzione dei requisiti computazionali e dello spazio di archiviazione necessari per le tecniche di preservazione della privacy che IoTeX sta attualmente utilizzando;
 
-\item La versione quantum-safe delle tecniche di conservazione della privacy che IoTeX utilizza attualmente, ad esempio una ring signature quantum-safe.
+\item La versione quantum-safe delle tecniche di protezione della privacy che IoTeX utilizza attualmente, ad esempio una ring signature quantum-safe.
 \end{itemize}
 
 
 \paragraph{Pruning e Trasferimento degli Stati}
-Stiamo valutando diversi modi per sfoltire in maniera sicura gli stati memorizzati nelle subchain, per ridurre l'ingombro di storage dal momento che molti dispositivi IoT dispongono di spazio di archiviazione limitato. La compressione di blocchi e transazioni risulta sicuramente una soluzione comoda. Inoltre, anche trasferire gli stati da una subchain alla rootchain (dal momento che quest'ultima è più dotata in termini di spazio di archiviazione) in maniera efficiente e con salvaguardia della privacy rappresenta un argomento insteressante da indagare.
+Stiamo valutando diversi modi per sfoltire in maniera sicura gli stati memorizzati nelle subchain, per ridurre l'ingombro di storage dal momento che molti dispositivi IoT dispongono di spazio di archiviazione limitato. La compressione di blocchi e transazioni risulta sicuramente una soluzione comoda. Inoltre, un argomento interessante da indagare è anche la possibilità di trasferire gli stati da una subchain alla rootchain (dal momento che quest'ultima è più dotata in termini di spazio di archiviazione) in maniera efficiente e proteggendo la privacy.
 
 \paragraph{Governance auto-adattativa}
 Mentre la blockchain IoTeX offre incentivi per mantenere il consenso sui suoi registri, per il momento non dispone di un meccanismo in grado di auto-modificare le regole che governano il suo protocollo. Per affrontare ciò, abbiamo in programma di condurre ricerche su governance e auto-modifica.
@@ -27,7 +27,7 @@ L'attuale blockchain IoTeX ha due livelli e, naturalmente, potrebbe essere estes
 \section{Conclusioni}
 In questo Whitepaper, abbiamo introdotto IoTeX, una blockchain scalabile, privata, ed estensibile, dedicata all'Internet of Things, con la sua architettura e le sue tecnologie di base, che includono:
 
-1. Blockchain in blockchain, per massimizzare scalabilità e privacy, 2. privacy totale su blockchain basata su codice di pagamento inoltrabile, ring signature a dimensione costante e senza configurazione trusted, e implementazione iniziale di bulletproofs, 3. consenso rapido con finalità istantanea basata su VRF e PoS per volumi di transazioni elevati e finalità istantanea e 4. architetture di sistema basate su IoTeX flessibili e leggere.
+1. Blockchain in blockchain, per massimizzare scalabilità e privacy, 2. privacy totale su blockchain basata su codice di pagamento inoltrabile, ring signature a dimensione costante senza configurazione trusted, e implementazione iniziale di bulletproofs, 3. consenso rapido con finalità istantanea basata su VRF e PoS per volumi di transazioni elevati e finalità istantanea e 4. architetture di sistema basate su IoTeX flessibili e leggere.
 
 \section{Ringraziamenti}
 Vogliamo esprimere la nostra gratitudine ai nostri mentori e consulenti e alle molte persone nelle comunità dell'IoT, della crittografia e delle criptovalute per i loro feedback iniziali e i suggerimenti costruttivi.

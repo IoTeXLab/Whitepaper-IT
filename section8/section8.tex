@@ -3,9 +3,9 @@
 La blockchain IoTeX supporta una varietà di ecosistemi IoT: shared economy, smart home, veicoli autonomi, supply chain, ecc. Diversi tipi di sviluppatori possono sfruttare IoTeX in modi diversi. Gli sviluppatori supportati da IoTeX includono produttori di hardware IoT, sviluppatori di sistemi di controllo dei dispositivi IoT, sviluppatori di app per smart home, produttori di dispositivi per la shared economy, integratori di dati della supply chain, venditori di data-crowdsourcing, sviluppatori di automobili a guida autonoma, ecc. Questa sezione descrive alcuni ecosistemi basati su IoTeX.
 
 \subsection{Shared Economy}
-Negli ultimi anni, molte aziende si sono concentrate sulla shared economy, dalla condivisione degli spostamenti come Uber/Lyft/Didi, alla condivisione di alloggi come Airbnb, alla condivisione di biciclette come Mobike/ofo, alla condivisione di piccoli oggetti come power bank, ombrelli, ecc... Tutti migliorano la vita delle persone, anche se alcuni ricevono un danno da questi modelli di business. Discutere questi modelli di business non è l'oggetto di questo documento; qui ci concentriamo principalmente sulla loro architettura tecnologica. Tra tutte le economie condivise, la condivisione degli spostamenti in auto è l'unico che al momento non può fare a meno del lavoro dell'uomo, ovvero il conducente. Non è un'economia basata su IoT. Tuttavia, in futuro, quando la tecnologia delle auto a guida autonoma sarà matura e diffusa, la condivisione dei viaggi sarà anch'essa basato su IoT.
+Negli ultimi anni, molte aziende si sono concentrate sulla shared economy, dalla condivisione dei viaggi realizzata da Uber/Lyft/Didi, alla condivisione di alloggi di Airbnb, alla condivisione di biciclette di Mobike/ofo, alla condivisione di piccoli oggetti come power bank, ombrelli, ecc... Tutti migliorano la vita delle persone, anche se alcuni business ne ricevono un danno. Discutere questi modelli di business non è oggetto di questo documento: qui ci concentriamo principalmente sulla loro architettura tecnologica. Tra tutte le economie condivise, la condivisione degli spostamenti in auto è l'unico che al momento non può fare a meno del lavoro dell'uomo, ovvero del conducente: non è un'economia basata su IoT. Tuttavia, in futuro, quando la tecnologia delle auto a guida autonoma sarà matura e diffusa, la condivisione dei viaggi sarà anch'essa basato su IoT.
 
-Le economie condivise basate su IoT hanno alcune somiglianze tra loro: tutte richiedono una qualche forma di "serratura" che può essere "sbloccata" da una cauzione, ed un canone di locazione. È assolutamente possibile ed anche efficiente basare l'intero processo di condivisione e restituzione utilizzando un dispositivo IoT. Nel mondo centralizzato, queste economie sono basate su un cloud centralizzato, ed esistono vari inconvenienti:
+Le economie condivise basate su IoT hanno alcune somiglianze tra loro: tutte richiedono un canone di locazione ed una qualche forma di "serratura" che può essere "sbloccata" da una cauzione. È assolutamente possibile ed anche efficiente basare l'intero processo di condivisione e Attualmente, queste economie sono basate su un cloud centralizzato, e questo porta a vari inconvenienti:
 
 \begin{enumerate}
     \item Un ingente deposito cauzionale è detenuto da una società che potrebbe non essere affidabile. Di recente ci sono stati molti casi in cui l'azienda che gestiva un servizio di bici condivise in Cina non è stata in grado di restituire i depositi ai propri clienti;
@@ -20,23 +20,23 @@ IoTeX, come infrastruttura, potrebbe essere utilizzato per creare queste applica
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{Figura7}
-    \label{fig:Figura7}
     \caption{Shared Economy basata su IoTeX}
+    \label{fig:Figura7}
 \end{figure}
 
 \begin{enumerate}
     \item Il deposito cauzionale è interamente regolato da uno smart contract. Poiché nessuno trattiene i soldi, la restituzione del deposito è sempre garantito. Gli utenti non sono obbligati a fidarsi di una compagnia per utilizzare il servizio.
 
-    \item Ogni oggetto condiviso realizza il suo valore e la sua missione autonomamente. Nell'ecosistema, non importa chi possiede gli oggetti in esso condivisi. Chiunque può possederli e contribuire all'ecosistema. L'economia condivisa può essere gestita dalla comunità. Di conseguenza, le aziende possono svolgere il ruolo di manutenere i dispositivi IoT di blocco (la "serratura") e gestire la community. È un modello di business molto più leggero che le aziende possono espandere velocemente per servire più persone.
+    \item Ogni oggetto condiviso realizza il suo valore e la sua missione autonomamente. Nell'ecosistema, non importa chi possiede gli oggetti in esso condivisi. Chiunque può possederli e contribuire all'ecosistema. L'economia condivisa può essere gestita dalla comunità. Di conseguenza, le aziende possono svolgere il ruolo di realizzare/manutenere i dispositivi IoT di blocco (la "serratura") e gestire la community. È un modello di business molto più leggero che le aziende possono espandere velocemente per servire più persone.
 
     \item Ancora una volta, gli utenti non devono fidarsi dell'azienda per mantenere i propri dati. I dati sono mantenuti nella blockchain IoTeX, con anche la protezione della privacy degli utenti.
 \end{enumerate}
 
-La Figura \ref{fig:Figura7} descrive come funziona la shared Economy basata sulla blockchain IoTeX.
+La Figura \ref{fig:Figura7} descrive come funziona la shared economy basata sulla blockchain IoTeX.
 
 \subsection{Smart Home}
 
-Nel mercato corrente delle smart home, molti produttori di dispositivi IoT continuano a utilizzare tecnologie obsolete per sviluppare i loro prodotti. Hanno bisogno di una grande quantità di lavoro di sviluppo per i loro cloud. Il costo di sviluppo e manutenzione è elevato, e le prestazioni sono basse a causa del tragitto di andata/ritorno richiesto verso/dal cloud. Distribuendo i loro prodotti sulla blockchain IoTeX, il produttore ridurrà in gran parte i costi operativi di ingegnerizzazione e di cloud computing e, allo stesso tempo, aumenterà notevolmente le prestazioni dei loro dispositivi. Nel semplice esempio di una lampadina intelligente, con la tecnologia cloud, occorrono due tragitti dei dati dall'istante in cui l'utente comanda di cambiare lo stato della lampadina. I produttori di hardware non sono esperti di cloud, così spesso il loro servizio non è ottimale: la comunicazione, tra l'andata e il ritorno, può durare da uno a tre secondi. Ciò li costringe a utilizzare i servizi cloud di grandi aziende IT, e ci sono due aspetti negativi dell'utilizzo di questi servizi cloud:
+Nel mercato corrente della smart home, molti produttori di dispositivi IoT continuano a utilizzare tecnologie obsolete per sviluppare i loro prodotti. Hanno bisogno di una grande quantità di lavoro di sviluppo per i loro cloud. Il costo di sviluppo e manutenzione è elevato, e le prestazioni sono basse a causa del tragitto di andata/ritorno richiesto verso/dal cloud. Distribuendo i loro prodotti sulla blockchain IoTeX, il produttore ridurrà in gran parte i costi operativi di ingegnerizzazione e di cloud computing e, allo stesso tempo, aumenterà notevolmente le prestazioni dei loro dispositivi. Nel semplice esempio di una lampadina intelligente, con la tecnologia cloud, occorrono due tragitti dei dati dall'istante in cui l'utente comanda di cambiare lo stato della lampadina. I produttori di hardware non sono esperti di cloud, così spesso il loro servizio non è ottimale: la comunicazione, tra l'andata e il ritorno, può durare da uno a tre secondi. Ciò li costringe a utilizzare i servizi cloud di grandi aziende IT, e ci sono due aspetti negativi dell'utilizzo di questi servizi cloud:
 
 \begin{enumerate}
     \item I produttori di hardware IoT non possono controllare completamente la disponibilità dei servizi cloud.
@@ -46,13 +46,13 @@ Nel mercato corrente delle smart home, molti produttori di dispositivi IoT conti
     \item Ci sono rischi di hacking del loro cloud: in caso di hacking lato client o intranet i dati degli utenti verrebbero trafugati o addirittura si potrebbero creare problemi di sicurezza domestica.
 \end{enumerate}
 
-Al contrario, la blockchain IoTeX gestisce i dispositivi localmente, e interagisce con la blockchain pubblica su internet solo quando necessario. La blockchain pubblica è gestita dalla comunità. Non ci sono costi di manutenzione per i produttori di IoT. La blockchain di IoTeX dispone di protezione della privacy, il che può impedire la rivelazione di dati sensibili oppure che l'unità di controllo venga hackerata, anche se la rete intranet dell'utente non è sicura.
+Al contrario, la blockchain IoTeX gestisce i dispositivi localmente, e interagisce con la blockchain pubblica su internet solo quando necessario. La blockchain pubblica è gestita dalla comunità. Non ci sono costi di manutenzione per i produttori di IoT. La blockchain di IoTeX dispone di protezione della privacy, il che può impedire la rivelazione di dati sensibili oppure che l'unità di controllo venga hackerata, anche nel caso che la rete intranet dell'utente non sia sicura.
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{Figura8}
-    \label{fig:Figura8}
     \caption{Smart Home basata su IoTeX}
+    \label{fig:Figura8}
 \end{figure}
 
 Oltre a consentire ai produttori di IoT di implementare i loro dispositivi sulla propria blockchain, IoTeX collaborerà con i produttori di chip IoT per sviluppare chip abilitati all'uso della blockchain IoTeX, per accelerare il ciclo di progettazione e produzione di dispositivi IoT. I produttori di dispositivi IoT potranno semplicemente integrare il chip per fare in modo che i loro dispositivi siano immediatamente supportati dalla blockchain IoTeX.
