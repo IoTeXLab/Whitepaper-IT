@@ -10,8 +10,8 @@ La "Separazione delle responsabilità" di solito crea un sistema ben bilanciato,
 \subsubsection{Il Rasoio di Occam}
 Diverse blockchain hanno utilizzi e applicazioni diverse, e dovrebbero essere progettate e ottimizzate verso direzioni diverse. Ad esempio: una blockchain dedicata all'inoltro delle transazioni tra le sue subchain non necessita che su di essa vengano eseguiti smart-contract Turing-Completi; un'altra blockchain che colleghi dispositivi appartenenti alla stessa zona di fiducia non dovrebbe preoccuparsi troppo della privacy delle transazioni.
 
-\subsubsection{Adatta per l'IoT}
-Come già detto, il mondo IoT è pieno di sistemi e nodi eterogenei, più o meno potenti in termini di risorse di calcolo, archiviazione e alimentazione. Dal momento che le operazioni eseguibili dai nodi deboli possono comunque essere facilmente eseguite da quelli forti, le operazioni sulla blockchain dovrebbero essere progettate e ottimizzate per i nodi deboli, ovvero le operazioni dovrebbero essere abbastanza leggere da risparmiare risorse come potenza di calcolo, spazio di archiviazione ed energia.
+\subsubsection{Convenienza per i dispositivi IoT}
+Come già detto, il mondo IoT è pieno di sistemi e nodi eterogenei, più o meno potenti in termini di risorse di calcolo, archiviazione e alimentazione. Dal momento che le operazioni eseguibili dai nodi deboli possono comunque essere facilmente eseguite da quelli forti, le operazioni sulla blockchain dovrebbero essere progettate e ottimizzate per i nodi deboli, ovvero le operazioni dovrebbero essere abbastanza leggere da risparmiare risorse come la potenza di calcolo, lo spazio di archiviazione e l'energia.
 
 \subsection{Architettura: Blockchain in Blockchain}
 IoTeX è una rete di molte blockchain disposte gerarchicamente, dove molte blockchain possono funzionare parallelamente tra loro pur mantenendo l'interoperabilità. Nel mondo IoTeX, come mostrato nella Figura \ref{fig:fig1}, la blockchain radice (\emph{rootchain}) gestisce molte blockchain indipendenti, o \emph{subchain}. Una subchain si connette e interagisce con quei dispositivi IoT con i quali ha qualcosa in comune, ad esempio che hanno uno scopo funzionale simile, che operano in ambienti simili, o che condividono un livello di fiducia simile. Se una subchain non funziona bene, ad esempio se viene attaccata o si verificano bug del software, la rootchain rimane completamente inalterata. Inoltre, sono supportate transazioni tra blockchain per trasferire valore e dati dalle subchain alla rootchain, oppure tra una subchain e l'altra attraverso la rootchain.
@@ -77,7 +77,7 @@ Le subchain supportano smart contract, che vengono eseguiti su una macchina virt
 	\item D'altra parte, i dispositivi possono cambiare il proprio stato sulla subchain quando l'ambiente fisico cambia, ad esempio, il termostato aggiorna la temperatura tramite uno smart contract in base ai dati provenienti dal suo sensore di temperatura;
 \end{itemize}
 
-\subsection{Comunicazione cross-blockchain}
+\subsection{Comunicazione crosschain}
 Ci si aspetta che la comunicazione tra blockchain diverse sarà utilizzata di frequente nelle applicazioni IoT. C'è sempre la necessità per un dispositivo IoT in una subchain di coordinarsi con un altro dispositivo in una diversa subchain. Ancora una volta, limitati dalla bassa potenza di calcolo e dal poco spazio di archiviazione dei dispositivi IoT, siamo motivati a progettare un tipo di comunicazione cross-chain che sia veloce ed economica in termini di risorse.
 
 \subsubsection{Pegging e Finalità dei Blocchi}
@@ -121,7 +121,7 @@ Il protocollo cross-chain di IoTeX risulta composto dai seguenti passi:
 
 \end{itemize}
 
-\subsubsection{Condivisione della larghezza di banda della Blockchain Root}
+\subsubsection{Condivisione della larghezza di banda della Rootchain}
 Una possibile proeccupazione che riguarda la comunicazione crosschain, è che alcune subchain malevoli possano generare \emph{spam} sulla rootchain o su un'altra subchain trasmettendo un'enorme quantità di transazioni crosschain, ed esaurendo così la capacità dell'altra blockchain. Un modo di attenuare il problema è di fare in modo di appaltare ad ogni subchain la propria quota di transazioni, e di limitare la frequenza delle transazioni provenienti da una subchain se la sua quota si esaurisce.
 
 \begin{figure}[ht]
